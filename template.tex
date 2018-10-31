@@ -171,10 +171,10 @@ We describe next a new method for flexible needle and patient localization in in
 Steps 1-5 are repeated each time the needle is gradually inserted during the intervention, until the tip localization shows the desired target structure in the patient's anatomy is reached. Optionally, full CT scans for image reconstruction can be acquired during the procedure as needed. Our method uses the same sparse projection sampling pattern both for registration and for needle localization, thereby avoiding additional scanning and image reconstruction. In this case, the radiation dose is a fraction of that required in image based methods. This allows frequent needle insertion and localization for feedback and accuracy without excessive radiation dose.
 
 The rest of this section is organized as follows.
-Section \ref{markerloc} summarizes the step for localizing the spherical marker in 3D space.
-Section \ref{inctracing} provides a detailed description of the incremental 3D curve tracing algorithm.
+The first section summarizes the step for localizing the spherical marker in 3D space.
+The second subsection provides a detailed description of the incremental 3D curve tracing algorithm.
 
-\subsection{Marker localization} \label{markerloc}
+\subsection*{\textbf{Marker localization}} \label{markerloc}
 The 3D center of the spherical marker is localized in three stages:
 \begin{enumerate}
     \item 
@@ -187,9 +187,9 @@ The 3D center of the spherical marker is localized in three stages:
     \begin{equation}
         c_j = \argmin_{c \in \rm I\!R^2}{
         \iint_{\lvert \, \lvert\lvert x-c \rvert\rvert - R \rvert < \epsilon}
-        {\nabla h_j(x) \cdot \hat{r}_c} \, \mathrm{d}x}
+        {\nabla h_j(x) \cdot \hat{r}_c (x)} \, \mathrm{d}x}
     \end{equation}
-    where $h_j(x)$ is the projection difference image for view $j$, $R$ is the known radius of the marker, and $\epsilon$ is a small distance parameter set to the physical size of one detector pixel, so that the gradient of the projection difference image is best aligned with the radial direction $\frac{(x-c)}{ \\\lvert\lvert x-c \rvert\rvert}$ inside a spherical shell of radius R and thickness $2\epsilon$.
+    where $h_j(x)$ is the projection difference image for view $j$, $R$ is the known radius of the marker, and $\epsilon$ is a small distance parameter set to the physical size of one detector pixel, so that the gradient of the projection difference image is best aligned with the radial direction $\hat{r}_c (x) = \frac{x-c}{ \\\lvert\lvert x-c \rvert\rvert}$ inside a spherical shell of radius R and thickness $2\epsilon$.
     }
     \item
     {
@@ -199,7 +199,7 @@ The 3D center of the spherical marker is localized in three stages:
 
 
 
-\subsection{Incremental trajectory tracing} \label{inctracing}
+\subsection*{\textbf{Incremental trajectory tracing}} \label{inctracing}
 
 The trajectory of the needle in 3D space is estimated by incrementally establishing a series of equidistant landmark points along the trajectory of the needle in 3D space $p_1, p_2, ..., p_i$. These landmark points are then fitted to cubic B\'ezier curve $C_i$  that traces the curvilinear shape of the needle from the center of the spherical marker toward the last point $p_i$, where $i$ is the number of landmark points. The points fitting to the Bezier curve is obtained with the method by Khan \cite{khan2007approximation}. The method computes the cubic B\'ezier curve in 3D space such that the squared-sum-distance of the landmark points from the curve is minimized. The sequence of landmark points is initialized with four co-linear and equidistant points starting from the marker center $p_1=s$. with successive distance $\Gamma$ along an initial direction determined by optimization of a cost function detailed in the following paragraph. The  parameter  $\Gamma$ is a fixed parameter for segment length. The minimal number of landmark points required to calculate a cubic B\'ezier curve is four. 
 
