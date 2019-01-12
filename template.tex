@@ -109,10 +109,13 @@ grestore
 \maketitle
 
 \begin{abstract}
-We present a new method for flexible needle and patient localization in interventional CT procedures based on fractional CT scanning.
+
+Purpose: We present a new method for flexible needle and patient localization in interventional CT procedures based on fractional CT scanning.
 Our method accurately localizes the trajectory of a flexible needle to which a spherical marker is attached at a known distance from the tip with respect to a baseline scan of patient in the CT scanner coordinate frame. 
-The localization is achieved with a significantly lower dose compared to a full scan using sparse view angle sampling and without reconstructing the CT image of the repeat scan.
-Our method starts by performing rigid registration between the patient and the baseline scan in 3D Radon space computed from the sparse projection data.  It then computes 2D projection difference images in which the flexible needle and the spherical marker appear as prominent features. Their 3D spatial locations are then automatically extracted from the projection images to accurately trace the flexible needle trajectory. To validate our method, we conducted registration and needle trajectory localization experiments in seven abdomen phantom scans using a short and a long flexible needle. Our experimental results yield a mean needle trajectory localization error of 0.7 $\pm$ 0.2mm and a mean tip localization error of 2.4 $\pm$ 0.9 mm with a $\times$7.5 radiation dose reduction with respect to a full CT scan. The significant radiation dose reduction enables more frequent needle trajectory localization during the needle insertion for a similar total dose, or a reduced total dose for the same localization frequency.
+Methods: The localization is achieved with a significantly lower dose compared to a full scan using sparse view angle sampling and without reconstructing the CT image of the repeat scan.
+Our method starts by performing rigid registration between the patient and the baseline scan in 3D Radon space computed from the sparse projection data. It then computes 2D projection difference images in which the flexible needle and the spherical marker appear as prominent features. Their 3D spatial locations are then automatically extracted from the projection images to accurately trace the flexible needle trajectory. To validate our method, we conducted registration and needle trajectory localization experiments in seven abdomen phantom scans using a short and a long flexible needle. 
+Results: Our experimental results yield a mean needle trajectory localization error of 0.7 $\pm$ 0.2mm and a mean tip localization error of 2.4 $\pm$ 0.9 mm with a $\times$7.5 radiation dose reduction with respect to a full CT scan. 
+Conclusions: The significant radiation dose reduction enables more frequent needle trajectory localization during the needle insertion for a similar total dose, or a reduced total dose for the same localization frequency.
 \keywords{
 interventional CT \and 
 fractional CT scanning \and 
